@@ -1,4 +1,8 @@
 --This file will set up our three data tables--
+DROP DATABASE IF EXISTS employeeTracker_db;
+CREATE DATABASE employeeTracker_db;
+
+\c employeeTracker_db;
 
 --department table--
 CREATE TABLE departments(
@@ -13,7 +17,7 @@ CREATE TABLE role (
     department INTEGER NOT NULL,
     CONSTRAINT fk_department
         FOREIGN KEY(department)
-        REFERENCES department(id)
+        REFERENCES departments(id)
 );
 --employee table--
 
@@ -24,9 +28,9 @@ CREATE TABLE employee (
     role_id INTEGER NOT NULL,
     manager_id INTEGER,
     CONSTRAINT fk_role
-        FOREIGN KEY(role_id),
+        FOREIGN KEY(role_id)
         REFERENCES role(id),
     CONSTRAINT fk_manager
-        FOREIGN KEY (manager_id),
-        REFERENCES employee(id),
+        FOREIGN KEY (manager_id)
+        REFERENCES employee(id)
 );
