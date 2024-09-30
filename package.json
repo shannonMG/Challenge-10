@@ -7,5 +7,10 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "inquirer": "^11.1.0",
+    "pg": "^8.13.0"
+  }
 }
