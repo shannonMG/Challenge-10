@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv'
-import { connectToDb } from '../db/connection';
-import { viewAllRoles, addRole, deleteRole } from './controllers/roleActions';
+import { connectToDb } from './connection.js';
+import { viewAllRoles, addRole, deleteRole } from './controllers/roleActions.js';
 
 dotenv.config();
 
