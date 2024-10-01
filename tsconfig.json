@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",  // The output directory for compiled .js files
+    "rootDir": "./src",  // The root directory of your TypeScript source files
+    "target": "es2016",  // Target ECMAScript version (can be ES2016, ES2020, etc.)
+    "module": "esnext",  // Use ES modules
+    "strict": true,      // Enable strict type checking
+    "esModuleInterop": true  // Enable interoperability between CommonJS and ES modules
+  },
+  "include": ["src/**/*"],  // Include all TypeScript files in the src directory
+  "exclude": ["node_modules"]  // Exclude the node_modules folder
+}

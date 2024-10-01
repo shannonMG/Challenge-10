@@ -4,7 +4,8 @@ viewAllRoles()
 addRole()
 deleteRole() */
 
-import { pool } from '../../db/db';
+import { pool } from '../../db/connection'
+
 
 export const viewAllRoles = async () => {
     try {
@@ -16,7 +17,7 @@ export const viewAllRoles = async () => {
     }
 };
  
-export const addRole = async(title, salary, departmentId) => {
+export const addRole = async(title: string, salary: number, departmentId: number) => {
     try{
         await pool.query(
             'INSERT INTO roles (title, salary, department_id) VALUES ($1, $2, $3)',
@@ -30,4 +31,13 @@ export const addRole = async(title, salary, departmentId) => {
 };
 
 
+export const deleteRole = async (roleId: number) => {
+    try {
+        await pool.query('DELETE FROM roles WHERE id = $1', [roleId]);
+        console.log('Role deleted successfully');
+    } catch (error) {
+        console.error('Error deleting role:', error);
+        throw error;
+    }
+};
 
