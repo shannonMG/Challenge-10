@@ -1,0 +1,1 @@
+ALTER TABLE role RENAME COLUMN department TO department_id;

@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv'
 import { connectToDb } from './connection.js';
 import { viewAllRoles, addRole, deleteRole } from './controllers/roleActions.js';
+import { startCli } from './index.js';
 
 dotenv.config();
 
@@ -47,10 +48,10 @@ const startServer = async () => {
       }
     });
 
-    // Start the server
     const port = process.env.PORT || 3000;
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
+      startCli(); // Call the CLI function after the server starts
     });
   } catch (error) {
     console.error('Error starting the server:', error);
