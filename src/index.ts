@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
-import { viewAllRoles, addRole, deleteRole } from './controllers/roleActions'; 
-import { connectToDb } from '../db/connection';  // Ensure you're connecting to the DB
+import { viewAllRoles, addRole, deleteRole } from './controllers/roleActions.js'; 
+import { connectToDb } from './connection.js';  // Ensure you're connecting to the DB
 
 // Function to handle the user's input
 const mainMenu = async () => {
