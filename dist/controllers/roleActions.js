@@ -6,17 +6,17 @@ deleteRole() */
 import { pool } from '../connection.js';
 export const viewAllRoles = async () => {
     try {
-        const result = await pool.query('SELECT * FROM roles');
+        const result = await pool.query('SELECT * FROM role');
         return result.rows;
     }
     catch (error) {
-        console.error('Error fetching roles:', error);
+        console.error('Error fetching role:', error);
         throw error;
     }
 };
 export const addRole = async (title, salary, departmentId) => {
     try {
-        await pool.query('INSERT INTO roles (title, salary, department_id) VALUES ($1, $2, $3)', [title, salary, departmentId]);
+        await pool.query('INSERT INTO role (title, salary, department_id) VALUES ($1, $2, $3)', [title, salary, departmentId]);
         console.log('Role added successfully');
     }
     catch (error) {
@@ -26,7 +26,7 @@ export const addRole = async (title, salary, departmentId) => {
 };
 export const deleteRole = async (roleId) => {
     try {
-        await pool.query('DELETE FROM roles WHERE id = $1', [roleId]);
+        await pool.query('DELETE FROM role WHERE id = $1', [roleId]);
         console.log('Role deleted successfully');
     }
     catch (error) {

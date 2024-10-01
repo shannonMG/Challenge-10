@@ -14,9 +14,9 @@ CREATE TABLE role (
     id SERIAL PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
-    department INTEGER NOT NULL,
+    department_id INTEGER NOT NULL,
     CONSTRAINT fk_department
-        FOREIGN KEY(department)
+        FOREIGN KEY(department_id)
         REFERENCES departments(id)
 );
 --employee table--
