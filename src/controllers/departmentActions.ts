@@ -19,3 +19,4 @@ export const getDepartments = async () => {
         throw error; // Handle the error appropriately
     }
 };
+
