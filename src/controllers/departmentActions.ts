@@ -1,7 +1,7 @@
 //handles the logic department related functions//
 
 /* Functions:
-getDepartments()
+getDepartments() - DONE
 viewAllDepartments()
 addDepartment()
 deleteDepartment()
