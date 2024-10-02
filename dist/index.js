@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
 import { viewAllRoles, addRole, deleteRole } from './controllers/roleActions.js';
 import { getDepartments } from './controllers/departmentActions.js';
+import { viewEmployeesByManager } from './controllers/managerActions.js';
 import { connectToDb } from './connection.js'; // Ensure you're connecting to the DB
 import { addEmployee, viewAllEmployees, deleteEmployee, updateEmployeeRole } from './controllers/employeeActions.js';
 // Function to handle the user's input
@@ -27,7 +28,7 @@ export const startCli = async () => {
                 type: 'list',
                 name: 'action',
                 message: 'What do you want to do?',
-                choices: ['View All Employees', 'Add Employee', 'Delete Employee', 'Update an Employee Role', "Update Employee's Manager", 'Add Role', 'View All Roles', 'Delete Role', 'Add Dempartment', 'Exit']
+                choices: ['View All Employees', 'Add Employee', 'Delete Employee', 'Update an Employee Role', "Update Employee's Manager", 'View Employees by Manager', 'Add Role', 'View All Roles', 'Delete Role', 'Add Dempartment', 'Exit']
             }
         ]);
         switch (answer.action) {
@@ -198,6 +199,19 @@ export const startCli = async () => {
                 ]);
                 // Call updateEmployeeRole function
                 await updateEmployeeRole(updateManager.employeeId, updateManager.newManagerId);
+                break;
+            case 'View Employees by Manager':
+                const employeesGroupedByManager = await viewEmployeesByManager();
+                console.log('Employees by Manager:');
+                for (const [___, managerData] of Object.entries(employeesGroupedByManager)) {
+                    console.log(`Manager: ${managerData.managerName}`);
+                    if (managerData.employees.length > 0) {
+                        console.table(managerData.employees); // Display employees as a table
+                    }
+                    else {
+                        console.log('  No employees under this manager.');
+                    }
+                }
                 break;
         }
     }
